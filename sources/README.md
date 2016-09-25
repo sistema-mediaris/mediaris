@@ -1,4 +1,4 @@
-# Mediaris - Recursos
+﻿# Mediaris - Recursos
 
 Abaixo poderão ser consultados inúmeros recursos pertinentes ao ambiente de desenvolvimento utilizado, utilitários e fontes de informações úteis.
 

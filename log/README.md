@@ -1,4 +1,4 @@
-# Mediaris - Acompanhamento
+﻿# Mediaris - Acompanhamento
 
 Aqui serão listadas as atividades e tarefas realizadas no desenvolvimento do projeto.
 
