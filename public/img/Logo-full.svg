@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<svg width="310" height="399.99999999999994" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <title>Mediaris</title>
+ <g>
+  <title>Layer 1</title>
+  <rect class="LogoFill--back" id="braco_1" height="223.382816" width="92.707034" y="169.746109" x="4.5" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#1e1d1c"/>
+  <rect class="LogoFill--back" id="braco_2" height="223.382816" width="92.707034" y="169.394516" x="212.572311" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#1e1d1c"/>
+  <path stroke-width="0" class="LogoFill--front" stroke-opacity="0" stroke="#000000" id="cabeca" d="m145.531037,8.49c15.03,-2.49 31.01,1.31 43.19,10.49c13.11,9.63 21.71,25.12 22.85,41.36c1.26,15.34 -4.06,31.07 -14.42,42.46c-10.1,11.36 -24.93,18.37 -40.13,18.86c-14.93,0.69 -29.99,-4.88 -40.92,-15.07c-10.85,-9.94 -17.57,-24.23 -18.25,-38.93c-0.76,-13.81 3.76,-27.82 12.45,-38.57c8.68,-10.89 21.48,-18.4 35.23,-20.6z" fill="#212121"/>
+  <path class="LogoFill--front" stroke-width="0" stroke-opacity="0" stroke="#000000" id="corpo" d="m95.541037,122.27c1.03,-0.48 1.98,-1.23 3.13,-1.4c18.65,28.34 37.57,56.5 56.33,84.77c18.76,-28.24 37.67,-56.37 56.29,-84.7l0.64,0.03c30.94,16.02 61.8,32.19 92.74,48.21c0.07,0.13 0.2,0.4 0.27,0.54c-31.26,46.43 -62.11,93.17 -93.17,139.75c-18.93,28.4 -37.84,56.83 -56.76,85.25c-19.02,-28.5 -37.93,-57.08 -56.99,-85.54c-30.32,-45.8 -60.9,-91.43 -91.25,-137.2c-0.53,-0.58 -1.58,-1.74 -2.11,-2.32c30.21,-15.95 60.6,-31.57 90.88,-47.39z" fill="#212121"/>
+ </g>
+</svg>
