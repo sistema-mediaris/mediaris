@@ -35,4 +35,28 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'google' => [
+        'client_id'     => env('GOOGLE_ID'),
+        'client_secret' => env('GOOGLE_SECRET'),
+        'redirect'      => env('GOOGLE_REDIRECT')
+    ],
+
+    'live' => [
+        'client_id'     => env('LIVE_ID'),
+        'client_secret' => env('LIVE_SECRET'),
+        'redirect'      => env('LIVE_REDIRECT')
+    ],
+
+    'linkedin' => [
+        'client_id'     => env('LINKEDIN_ID'),
+        'client_secret' => env('LINKEDIN_SECRET'),
+        'redirect'      => env('LINKEDIN_REDIRECT')
+    ],
+
+    'yahoo' => [
+        'client_id'     => env('YAHOO_ID'),
+        'client_secret' => env('YAHOO_SECRET'),
+        'redirect'      => env('YAHOO_REDIRECT')
+    ],
+
 ];
