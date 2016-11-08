@@ -23,7 +23,7 @@ class Aluno extends Model
 
     public function usuario()
     {
-        return $this->hasOne('App\Usuario');
+        return $this->belongsTo('App\Usuario', 'usuarios_id');
     }
 
 }

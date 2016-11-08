@@ -21,4 +21,9 @@ class Titulacao extends Model
      */
     protected $guarded = ['id'];
 
+    public function docentes()
+    {
+        return $this->hasMany('App\Docente');
+    }
+
 }

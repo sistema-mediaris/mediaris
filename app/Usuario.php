@@ -23,12 +23,12 @@ class Usuario extends Model
 
     public function docente()
     {
-        return $this->belongsTo('App\Docente');
+        return $this->hasOne('App\Docente');
     }
 
     public function aluno()
     {
-        return $this->belongsTo('App\Aluno');
+        return $this->hasOne('App\Aluno');
     }
     
 }
