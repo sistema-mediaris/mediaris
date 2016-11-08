@@ -48,10 +48,10 @@
 
         <div class="col-md-4 offset-md-2" style="text-align: center;">
             <a href="#" class="btn btn-block btn-social btn-google">
-                <i class="demo-icon icon-google" style="font-size: .975em;"></i> Autenticar com Google
+                <i class="demo-icon icon-google" style="font-size: .975em;"></i> Autenticar com Google Gmail
             </a>
             <a href="#" class="btn btn-block btn-social btn-microsoft">
-                <i class="demo-icon icon-windows" style="font-size: .975em;"></i> Autenticar com Windows Live
+                <i class="demo-icon icon-outlook" style="font-size: .975em;"></i> Autenticar com Windows Outlook
             </a>
             <a href="#" class="btn btn-block btn-social btn-linkedin">
                 <i class="demo-icon icon-linkedin" style="font-size: .975em;"></i> Autenticar com LinkedIn

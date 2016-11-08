@@ -70,35 +70,33 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Entrar</b> <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <div class="row">
+                            <li class="row">
 
-                                    <div class="col-md-12">
+                                <div class="col-md-12">
 
-                                        <p>Realizar autenticação</p>
+                                    <p>Realizar autenticação</p>
 
-                                        <div class="social-buttons">
-                                            <a href="#" class="btn btn-lg btn-social-icon btn-google">
-                                                <i class="demo-icon icon-google" style="font-size: .975em;"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-lg btn-social-icon btn-microsoft">
-                                                <i class="demo-icon icon-windows" style="font-size: .975em;"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-lg btn-social-icon btn-linkedin">
-                                                <i class="demo-icon icon-linkedin" style="font-size: .975em;"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-lg btn-social-icon btn-yahoo">
-                                                <i class="demo-icon icon-yahoo" style="font-size: .975em;"></i>
-                                            </a>
-                                        </div>
-
-                                        <hr>
-
+                                    <div class="social-buttons">
+                                        <a href="#" class="btn btn-lg btn-social-icon btn-google">
+                                            <i class="demo-icon icon-google" style="font-size: .975em;"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-lg btn-social-icon btn-microsoft">
+                                            <i class="demo-icon icon-outlook" style="font-size: .975em;"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-lg btn-social-icon btn-linkedin">
+                                            <i class="demo-icon icon-linkedin" style="font-size: .975em;"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-lg btn-social-icon btn-yahoo">
+                                            <i class="demo-icon icon-yahoo" style="font-size: .975em;"></i>
+                                        </a>
                                     </div>
 
-                                    <p>Novo por aqui? <a href="{{ url('/cadastro') }}"><b>Cadastre-se!</b></a></p>
+                                    <hr>
 
                                 </div>
+
+                                <p>Novo por aqui? <a href="{{ url('/cadastro') }}"><b>Cadastre-se!</b></a></p>
+
                             </li>
                         </ul>
                     </li>
