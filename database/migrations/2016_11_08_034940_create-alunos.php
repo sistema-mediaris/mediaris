@@ -15,7 +15,7 @@ class CreateAlunos extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuarios_id')->unsigned()->index();
+            $table->integer('usuarios_id')->unsigned()->nullable()->default(null)->index();
             $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->string('nome_exibicao');
             $table->timestamps();

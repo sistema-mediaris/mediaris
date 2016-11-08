@@ -15,9 +15,9 @@ class CreateDocentes extends Migration
     {
         Schema::create('docentes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuarios_id')->unsigned()->index();
+            $table->integer('usuarios_id')->unsigned()->nullable()->default(null)->index();
             $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
-            $table->integer('titulacoes_id')->unsigned()->index();
+            $table->integer('titulacoes_id')->unsigned()->nullable()->default(null)->index();
             $table->foreign('titulacoes_id')->references('id')->on('titulacoes')->onDelete('no action');
             $table->string('nome_exibicao');
             $table->timestamps();
