@@ -21,6 +21,13 @@ class Usuario extends Model
      */
     protected $guarded = ['id'];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name', 'email', 'avatar', 'super', 'provider', 'social_id'];
+
     public function docente()
     {
         return $this->hasOne('App\Docente');

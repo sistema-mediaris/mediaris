@@ -20,6 +20,8 @@ class CreateUsuarios extends Migration
             $table->string('avatar');
             $table->string('provider', 32);
             $table->text('social_id');
+            $table->boolean('super')->default(false);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
