@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Socialite;
 use App\Http\Controllers\Controller;
+use App\Usuario;
 use App\User;
 use Auth;
-use Socialite;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class AuthController extends Controller
 {
+
+    //usada para verificar se um usuário ja está cadastrado ou não
+    protected $userControl;
+
     /**
      * Redirect the user to the providers authentication page.
      *
@@ -31,23 +37,59 @@ class AuthController extends Controller
      */
     public function handleProviderCallback($driver)
     {
+        /*
+        $data = Input::all();
 
-        if($driverDoesntExist = $this->checkIfDriverExists($driver)){
-            return $driverDoesntExist;
-        }
+        $rules = array(
+            'aceitacao_info' => 'required',
+            'aceitacao_usuario' => 'required',
+            'aceitacao_termo' => 'required',
+        );
 
-        try {
-            $user = Socialite::driver($driver)->user();
-        } catch (Exception $e) {
-            return redirect('/')->withErrors($e->getMessage());
-        }
+        $validator = Validator::make($data, $rules);
+        
+        if ($validator->fails()) {
 
-        Auth::login(User::firstOrCreate([
-            'name'      => $user->name,
-            'email'     => $user->email,
-        ]), true);
+            return Redirect::to('/auth/' . $driver . '/callback')->withInput()->withErrors($validator);
 
-        return redirect('/');
+        } else {
+*/
+            if ($driverDoesntExist = $this->checkIfDriverExists($driver)) {
+                return $driverDoesntExist;
+            }
+
+            try {
+                $user = Socialite::driver($driver)->user();
+            } catch (Exception $e) {
+                return redirect('/erro')->withErrors($e->getMessage());
+            }
+
+            $authUser = $this->findOrCreateUser($user);
+/*
+            $user = new User;
+            $user->name = $authUser->name;
+            $user->email = $authUser->email;
+            $user->avatar = $authUser->avatar;
+            $user->provider = $driver;
+            $user->social_id = $authUser->id;
+*/
+
+            $data = [
+                'name' => $user->name,
+                'email' => $user->email,
+                'provider' => $driver,
+                'social_id' => $user->id,
+            ];
+
+            if($user->avatar)
+                $data['avatar'] = $user->avatar;
+
+            //Auth::login($user, $this->userControl); //se userControl=true, persiste novo registro no banco
+            Auth::login(User::firstOrCreate($data));
+
+            return redirect('dashboard');
+
+//        }
     }
 
     /**
@@ -60,9 +102,49 @@ class AuthController extends Controller
     private function checkIfDriverExists($driver)
     {
         if(!config('services.'.$driver)){
-            return redirect('/');
+            return redirect('/cadastro');
         }
 
         return false;
+    }
+
+    /**
+     * Return user if exists; create and return if doesn't
+     *
+     * @param $user
+     * @return User
+     */
+    private function findOrCreateUser($providerUser)
+    {
+        //$authUser = Usuario::where('social_id', $user->id)->where('email', $user->email)->first();
+
+        if ($authUser = Usuario::where('social_id', $providerUser->id)->first()) {
+/*
+            Usuario::where('social_id', $user->id)
+                ->where('email', $user->email)
+                ->where('super', $super)->first()
+                ->update([
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->avatar,
+                'provider' => $driver,
+                'social_id' => $user->id,
+                'super' => $super,
+            ]);
+*/
+            $output = new ConsoleOutput;
+            $output->writeln("<info>teste dentro</info>");
+
+            $this->userControl = false;
+            return $authUser;
+
+        }
+
+        $output = new ConsoleOutput;
+            $output->writeln("<info>teste fora</info>");
+
+        $this->userControl = true;
+        return $providerUser;
+
     }
 }
