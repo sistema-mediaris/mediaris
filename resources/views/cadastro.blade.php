@@ -47,16 +47,16 @@
         </div>
 
         <div class="col-md-4 offset-md-2" style="text-align: center;">
-            <a href="#" class="btn btn-block btn-social btn-google">
+            <a href="{{ url('/auth/google') }}" class="btn btn-block btn-social btn-google">
                 <i class="demo-icon icon-google" style="font-size: .975em;"></i> Autenticar com Google Gmail
             </a>
-            <a href="#" class="btn btn-block btn-social btn-microsoft">
+            <a href="{{ url('/auth/live') }}" class="btn btn-block btn-social btn-microsoft">
                 <i class="demo-icon icon-outlook" style="font-size: .975em;"></i> Autenticar com Windows Outlook
             </a>
-            <a href="#" class="btn btn-block btn-social btn-linkedin">
+            <a href="{{ url('/auth/linkedin') }}" class="btn btn-block btn-social btn-linkedin">
                 <i class="demo-icon icon-linkedin" style="font-size: .975em;"></i> Autenticar com LinkedIn
             </a>
-            <a href="#" class="btn btn-block btn-social btn-yahoo">
+            <a href="{{ url('/auth/yahoo') }}" class="btn btn-block btn-social btn-yahoo">
                 <i class="demo-icon icon-yahoo" style="font-size: .975em;"></i> Autenticar com Yahoo
             </a>
         </div>

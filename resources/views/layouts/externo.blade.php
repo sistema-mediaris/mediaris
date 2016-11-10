@@ -77,16 +77,16 @@
                                     <p>Realizar autenticação</p>
 
                                     <div class="social-buttons">
-                                        <a href="#" class="btn btn-lg btn-social-icon btn-google">
+                                        <a href="{{ url('/auth/google') }}" class="btn btn-lg btn-social-icon btn-google">
                                             <i class="demo-icon icon-google" style="font-size: .975em;"></i>
                                         </a>
-                                        <a href="#" class="btn btn-lg btn-social-icon btn-microsoft">
+                                        <a href="{{ url('/auth/live') }}" class="btn btn-lg btn-social-icon btn-microsoft">
                                             <i class="demo-icon icon-outlook" style="font-size: .975em;"></i>
                                         </a>
-                                        <a href="#" class="btn btn-lg btn-social-icon btn-linkedin">
+                                        <a href="{{ url('/auth/linkedin') }}" class="btn btn-lg btn-social-icon btn-linkedin">
                                             <i class="demo-icon icon-linkedin" style="font-size: .975em;"></i>
                                         </a>
-                                        <a href="#" class="btn btn-lg btn-social-icon btn-yahoo">
+                                        <a href="{{ url('/auth/yahoo') }}" class="btn btn-lg btn-social-icon btn-yahoo">
                                             <i class="demo-icon icon-yahoo" style="font-size: .975em;"></i>
                                         </a>
                                     </div>
