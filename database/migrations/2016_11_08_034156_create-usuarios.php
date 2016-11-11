@@ -17,7 +17,7 @@ class CreateUsuarios extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
-            $table->string('avatar')->default(asset('/img/profile.png'));
+            $table->string('avatar')->default('/img/profile.png');
             $table->string('provider', 32);
             $table->text('social_id');
             $table->boolean('super')->default(false);

@@ -31,7 +31,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Handle the providers call back.
+     * Handle the providers call back and login authenticated user
      *
      * @return Response
      */
@@ -64,15 +64,7 @@ class AuthController extends Controller
                 return redirect('/erro')->withErrors($e->getMessage());
             }
 
-            $authUser = $this->findOrCreateUser($user);
-/*
-            $user = new User;
-            $user->name = $authUser->name;
-            $user->email = $authUser->email;
-            $user->avatar = $authUser->avatar;
-            $user->provider = $driver;
-            $user->social_id = $authUser->id;
-*/
+            //$authUser = $this->findOrCreateUser($user);
 
             $data = [
                 'name' => $user->name,
@@ -90,6 +82,17 @@ class AuthController extends Controller
             return redirect('dashboard');
 
 //        }
+    }
+
+    /**
+     * Logout authenticated user
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 
     /**
@@ -111,7 +114,7 @@ class AuthController extends Controller
     /**
      * Return user if exists; create and return if doesn't
      *
-     * @param $user
+     * @param $providerUser
      * @return User
      */
     private function findOrCreateUser($providerUser)
@@ -119,19 +122,7 @@ class AuthController extends Controller
         //$authUser = Usuario::where('social_id', $user->id)->where('email', $user->email)->first();
 
         if ($authUser = Usuario::where('social_id', $providerUser->id)->first()) {
-/*
-            Usuario::where('social_id', $user->id)
-                ->where('email', $user->email)
-                ->where('super', $super)->first()
-                ->update([
-                'name' => $user->name,
-                'email' => $user->email,
-                'avatar' => $user->avatar,
-                'provider' => $driver,
-                'social_id' => $user->id,
-                'super' => $super,
-            ]);
-*/
+
             $output = new ConsoleOutput;
             $output->writeln("<info>teste dentro</info>");
 
