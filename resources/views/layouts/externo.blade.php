@@ -39,105 +39,24 @@
 
 @yield('inline-css')
 
+<style>
+    body {
+        padding-top: 20px;
+    }
+</style>
+
 <body>
 
 <div class="container">
 
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url('/') }}">MEDIARIS</a>
-            </div>
-
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/sobre') }}">Sobre</a></li>
-                    <li><a href="{{ url('/ajuda') }}">Ajuda</a></li>
-                    <li><a href="{{ url('/contato') }}">Contato</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <p class="navbar-text">Já possui uma conta?</p>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Entrar</b> <span
-                                    class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="row">
-
-                                <div class="col-md-12">
-
-                                    <p>Realizar autenticação</p>
-
-                                    <div class="social-buttons">
-                                        <a href="{{ url('/auth/google') }}" class="btn btn-lg btn-social-icon btn-google">
-                                            <i class="demo-icon icon-google" style="font-size: .975em;"></i>
-                                        </a>
-                                        <a href="{{ url('/auth/live') }}" class="btn btn-lg btn-social-icon btn-microsoft">
-                                            <i class="demo-icon icon-outlook" style="font-size: .975em;"></i>
-                                        </a>
-                                        <a href="{{ url('/auth/linkedin') }}" class="btn btn-lg btn-social-icon btn-linkedin">
-                                            <i class="demo-icon icon-linkedin" style="font-size: .975em;"></i>
-                                        </a>
-                                        <a href="{{ url('/auth/yahoo') }}" class="btn btn-lg btn-social-icon btn-yahoo">
-                                            <i class="demo-icon icon-yahoo" style="font-size: .975em;"></i>
-                                        </a>
-                                    </div>
-
-                                    <hr>
-
-                                </div>
-
-                                <p>Novo por aqui? <a href="{{ url('/cadastro') }}"><b>Cadastre-se!</b></a></p>
-
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @include('includes.topmenuexterno')
 
     @yield('content')
 
     <hr>
 
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="footer-distributed">
+    @include('includes.footer')
 
-                    <div class="footer-right">
-
-                        <a href="#"><i class="demo-icon icon-facebook" style="font-size: .975em; color: #fefefe;"></i></a>
-                        <a href="https://github.com/sistema-mediaris"><i class="demo-icon icon-github-circled" style="font-size: .975em; color: #fefefe;"></i></a>
-
-                    </div>
-
-                    <div class="footer-left">
-
-                        <p class="footer-links">
-                            <a href="{{ url('/') }}">Página Inicial</a> ·
-                            <a href="{{ url('/sobre') }}">Sobre</a> ·
-                            <a href="{{ url('/ajuda') }}">Ajuda</a> ·
-                            <a href="{{ url('/contato') }}">Contato</a> ·
-                            <a href="{{ url('/termos') }}">Termos de serviço</a>
-                        </p>
-
-                        <p>Mediaris &copy; 2016</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
