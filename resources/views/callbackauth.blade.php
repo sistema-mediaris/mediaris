@@ -1,19 +1,3 @@
-<?php
-
-/**
- * Verifica se existe um usuário autenticado e retornado
- */
-
-try {
-
-    $user = Socialite::driver($driver)->user();
-
-} catch (Exception $e) {
-    $user = false;
-}
-
-?>
-
 @extends('layouts.externo')
 
 @section('title', 'Confirmação')
@@ -68,16 +52,16 @@ try {
 
             <h1>Confirmação - Autenticação</h1>
 
-            @if($user)
+            @if(Auth::check())
 
                 <h4>Para prosseguir com o cadastro, confira os dados e preencha as informações complementares.</h4>
                 <h4>Confira os dados a serem compartilhados abaixo:</h4>
 
-                <p><strong>Nome:</strong> {{ $user->name }}</p>
-                <p><strong>Email:</strong> {{ $user->email }}</p>
-                <p><strong>Serviço:</strong> {{ $driver }}</p>
+                <p><strong>Nome:</strong> {{ Auth::user()->name }}</p>
+                <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+                <p><strong>Serviço:</strong> {{ Auth::user()->provider }}</p>
                 <p><strong>Detalhe da foto:</strong></p>
-                <div class="profile-avatar" style="background-image: url({{ $user->avatar }});"></div>
+                <div class="profile-avatar" style="background-image: url({{ Auth::user()->avatar }});"></div>
 
             @else
 
@@ -100,15 +84,15 @@ try {
                 </div>
             @endif
 
-            @if($user)
+            @if(Auth::check())
 
-                <form action="{{ url('/auth/' . $driver . '/callback') }}" method="post" class="row form-horizontal">
+                <form action="{{ url('/auth/' . Auth::user()->provider . '/callback') }}" method="post" class="row form-horizontal">
 
-                    @if($user->super)
+{{--                    @if($user->super)--}}
                         <h4>Você está sendo cadastrado como <strong>DOCENTE</strong></h4>
-                    @else
-                        <h4>Você está sendo cadastrado como <strong>ALUNO</strong></h4>
-                    @endif
+                    {{--@else--}}
+                        {{--<h4>Você está sendo cadastrado como <strong>ALUNO</strong></h4>--}}
+                    {{--@endif--}}
 
                     <div class="form-group">
                         <label class="control-label" for="nomeexibicao">Nome de exibição</label>
@@ -121,24 +105,24 @@ try {
                         <label class="control-label" for="aceitacao">Termos de aceitação</label>
                         <div class="checkbox">
                             <label for="aceitacao-0">
-                                <input type="checkbox" name="aceitacao_info" id="aceitacao-0" value="1" {{ Input::old('aceitacao_info') ? 'checked' : '' }} >
+                                <input type="checkbox" name="aceitacao_info" id="aceitacao-0" value="1" >
                                 <span class="hidden-xs hidden-sm">Confirmo que as informações ao lado são verídicas.</span>
                                 <span class="hidden-md hidden-lg">Confirmo que as informações acima são verídicas.</span>
                             </label>
                         </div>
                         <div class="checkbox">
                             <label for="aceitacao-1">
-                                <input type="checkbox" name="aceitacao_usuario" id="aceitacao-1" value="2" {{ Input::old('aceitacao_usuario') ? 'checked' : '' }} >
-                                @if($user->super)
+                                <input type="checkbox" name="aceitacao_usuario" id="aceitacao-1" value="2" >
+                                {{--@if($user->super)--}}
                                     Confirmo que desejo prosseguir como Docente.
-                                @else
-                                    Confirmo que desejo prosseguir como Aluno.
-                                @endif
+                                {{--@else--}}
+                                    {{--Confirmo que desejo prosseguir como Aluno.--}}
+                                {{--@endif--}}
                             </label>
                         </div>
                         <div class="checkbox">
                             <label for="aceitacao-2">
-                                <input type="checkbox" name="aceitacao_termo" id="aceitacao-2" value="3" {{ Input::old('aceitacao_termo') ? 'checked' : '' }} >
+                                <input type="checkbox" name="aceitacao_termo" id="aceitacao-2" value="3" >
                                 Concordo com os <a href="{{ url('/termos') }}" target="_blank">Termos de serviço</a>.
                             </label>
                         </div>

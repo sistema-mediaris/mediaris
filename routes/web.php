@@ -46,3 +46,13 @@ Route::get('auth/{driver}/callback', function ($driver) {
 */
 
 Route::get('/sair', 'Auth\AuthController@logout');
+
+// Layouts avulsos
+
+Route::get('/usuarios/criar', function () {
+    return view('callbackauth');
+});
+
+Route::get('/turma', function () {
+    return view('turma');
+});
