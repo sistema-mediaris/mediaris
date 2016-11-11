@@ -24,7 +24,7 @@
         <div class="row custom-valign">
 
             <div class="col-md-7">
-                <h1>Simples e focado</h1>
+                <h1 style="font-size: 3em;">Simples e focado</h1>
                 <p>Mediaris é uma plataforma educacional de apoio, voltada para o gerenciamento e controle de informações relacionadas aos métodos de avaliação acadêmica.</p>
                 <p>
                     <a class="btn btn-lg btn-primary" href="{{ url('/sobre') }}" role="button">Como funciona &raquo;</a>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col-md-5" style="text-align: center;">
-                <img src="{{ asset('/img/Logo-full.svg') }}" alt="Logo - Mediaris" />
+                <img src="{{ asset('/img/Logo-full.svg') }}" alt="Logo - Mediaris" style="max-height: 16em;"/>
             </div>
         </div>
     </div>
