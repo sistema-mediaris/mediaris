@@ -27,14 +27,6 @@ Route::get('/erro', function () {
     return view('erro');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
-Route::get('/trabalhos/criar', function () {
-    return view('trabalhocriar');
-});
-
 Route::get('auth/{driver}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{driver}/callback', 'Auth\AuthController@handleProviderCallback');
 
@@ -55,4 +47,12 @@ Route::get('/usuarios/criar', function () {
 
 Route::get('/turma', function () {
     return view('turma');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/trabalhos/criar', function () {
+    return view('trabalhocriar');
 });
