@@ -10,7 +10,9 @@
         "laravel/socialite": "^2.0",
         "socialiteproviders/yahoo": "^2.0",
         "socialiteproviders/microsoft-live": "^2.0",
-        "socialiteproviders/linkedin": "^2.0"
+        "socialiteproviders/linkedin": "^2.0",
+        "reliese/laravel": "^0.0.11",
+        "simplesoftwareio/simple-qrcode": "^1.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
