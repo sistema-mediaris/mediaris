@@ -27,9 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alunos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuarios_id` int(11) NOT NULL,
-  `nome_exibicao` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `nome_exibicao` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -40,7 +43,9 @@ CREATE TABLE `alunos` (
 
 CREATE TABLE `aluno_turma` (
   `alunos_id` int(11) NOT NULL,
-  `turmas_id` int(11) NOT NULL
+  `turmas_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -50,9 +55,12 @@ CREATE TABLE `aluno_turma` (
 --
 
 CREATE TABLE `cidades` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `estados_id` int(11) NOT NULL
+  `estados_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -63,7 +71,9 @@ CREATE TABLE `cidades` (
 
 CREATE TABLE `cidade_instituicao` (
   `instituicoes_id` int(11) NOT NULL,
-  `cidades_id` int(11) NOT NULL
+  `cidades_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -74,10 +84,13 @@ CREATE TABLE `cidade_instituicao` (
 --
 
 CREATE TABLE `complementos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` text COLLATE utf8_unicode_ci NOT NULL,
   `assunto` text COLLATE utf8_unicode_ci NOT NULL,
-  `objetivo` text COLLATE utf8_unicode_ci NOT NULL
+  `objetivo` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -87,10 +100,13 @@ CREATE TABLE `complementos` (
 --
 
 CREATE TABLE `cursos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `duracao_sem` int(11) NOT NULL,
-  `duracao_ano` int(11) NOT NULL
+  `duracao_ano` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -102,7 +118,9 @@ CREATE TABLE `cursos` (
 
 CREATE TABLE `curso_disciplina` (
   `cursos_id` int(11) NOT NULL,
-  `disciplinas_id` int(11) NOT NULL
+  `disciplinas_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -114,7 +132,9 @@ CREATE TABLE `curso_disciplina` (
 
 CREATE TABLE `curso_grau_academico` (
   `cursos_id` int(11) NOT NULL,
-  `graus_academicos_id` int(11) NOT NULL
+  `graus_academicos_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -126,7 +146,9 @@ CREATE TABLE `curso_grau_academico` (
 
 CREATE TABLE `curso_instituicao` (
   `instituicoes_id` int(11) NOT NULL,
-  `cursos_id` int(11) NOT NULL
+  `cursos_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -138,7 +160,9 @@ CREATE TABLE `curso_instituicao` (
 
 CREATE TABLE `curso_turno` (
   `cursos_id` int(11) NOT NULL,
-  `turnos_id` int(11) NOT NULL
+  `turnos_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -149,8 +173,11 @@ CREATE TABLE `curso_turno` (
 --
 
 CREATE TABLE `disciplinas` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -161,10 +188,13 @@ CREATE TABLE `disciplinas` (
 --
 
 CREATE TABLE `docentes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuarios_id` int(11) NOT NULL,
   `titulacoes_id` int(11) DEFAULT NULL,
-  `nome_exibicao` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `nome_exibicao` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -174,10 +204,13 @@ CREATE TABLE `docentes` (
 --
 
 CREATE TABLE `entregas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `alunos_id` int(11) NOT NULL,
   `solicitacoes_id` int(11) NOT NULL,
-  `feedback_id` int(11) NOT NULL
+  `feedback_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -188,7 +221,9 @@ CREATE TABLE `entregas` (
 
 CREATE TABLE `entrega_trabalho` (
   `entregas_id` int(11) NOT NULL,
-  `trabalhos_id` int(11) NOT NULL
+  `trabalhos_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -198,9 +233,12 @@ CREATE TABLE `entrega_trabalho` (
 --
 
 CREATE TABLE `estados` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `sigla` varchar(2) COLLATE utf8_unicode_ci NOT NULL
+  `sigla` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -211,8 +249,11 @@ CREATE TABLE `estados` (
 --
 
 CREATE TABLE `feedback` (
-  `id` int(11) NOT NULL,
-  `comentario` text COLLATE utf8_unicode_ci NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `comentario` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -222,8 +263,11 @@ CREATE TABLE `feedback` (
 --
 
 CREATE TABLE `graus_academicos` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -234,9 +278,12 @@ CREATE TABLE `graus_academicos` (
 --
 
 CREATE TABLE `instituicoes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `sigla` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `sigla` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -248,7 +295,9 @@ CREATE TABLE `instituicoes` (
 
 CREATE TABLE `solicitacao_tipo_arquivo` (
   `solicitacoes_id` int(11) NOT NULL,
-  `tipos_arquivos_id` int(11) NOT NULL
+  `tipos_arquivos_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -258,12 +307,15 @@ CREATE TABLE `solicitacao_tipo_arquivo` (
 --
 
 CREATE TABLE `solicitacoes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `turmas_id` int(11) NOT NULL,
   `complementos_id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `data_criacao` date NOT NULL,
-  `data_entrega` date NOT NULL
+  `data_entrega` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -273,8 +325,11 @@ CREATE TABLE `solicitacoes` (
 --
 
 CREATE TABLE `tipos_arquivos` (
-  `id` int(11) NOT NULL,
-  `extensao` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `extensao` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -285,9 +340,12 @@ CREATE TABLE `tipos_arquivos` (
 --
 
 CREATE TABLE `titulacoes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `abreviacao` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `abreviacao` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -298,11 +356,14 @@ CREATE TABLE `titulacoes` (
 --
 
 CREATE TABLE `trabalhos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `extensao` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `tipo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `url_cloud` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `url_cloud` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -312,13 +373,16 @@ CREATE TABLE `trabalhos` (
 --
 
 CREATE TABLE `turmas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `docentes_id` int(11) NOT NULL,
   `instituicoes_id` int(11) NOT NULL,
   `cursos_id` int(11) NOT NULL,
   `semestre` int(11) NOT NULL,
   `ano` int(11) NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -328,8 +392,11 @@ CREATE TABLE `turmas` (
 --
 
 CREATE TABLE `turnos` (
-  `id` int(11) NOT NULL,
-  `periodo` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `periodo` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -339,7 +406,7 @@ CREATE TABLE `turnos` (
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '/img/profile.png',
@@ -348,7 +415,8 @@ CREATE TABLE `usuarios` (
   `super` tinyint(1) NOT NULL DEFAULT '0',
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -360,7 +428,7 @@ CREATE TABLE `usuarios` (
 -- Indexes for table `alunos`
 --
 ALTER TABLE `alunos`
-  ADD PRIMARY KEY (`id`),
+--  ADD PRIMARY KEY (`id`),
   ADD KEY `alunos_usuarios` (`usuarios_id`);
 
 --
@@ -374,7 +442,7 @@ ALTER TABLE `aluno_turma`
 -- Indexes for table `cidades`
 --
 ALTER TABLE `cidades`
-  ADD PRIMARY KEY (`id`),
+--  ADD PRIMARY KEY (`id`),
   ADD KEY `cidades_estados` (`estados_id`);
 
 --
@@ -387,14 +455,14 @@ ALTER TABLE `cidade_instituicao`
 --
 -- Indexes for table `complementos`
 --
-ALTER TABLE `complementos`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `complementos`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cursos`
 --
-ALTER TABLE `cursos`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `cursos`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `curso_disciplina`
@@ -427,14 +495,14 @@ ALTER TABLE `curso_turno`
 --
 -- Indexes for table `disciplinas`
 --
-ALTER TABLE `disciplinas`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `disciplinas`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `docentes`
 --
 ALTER TABLE `docentes`
-  ADD PRIMARY KEY (`id`),
+--  ADD PRIMARY KEY (`id`),
   ADD KEY `docentes_titulacoes` (`titulacoes_id`),
   ADD KEY `docentes_usuarios` (`usuarios_id`);
 
@@ -442,7 +510,7 @@ ALTER TABLE `docentes`
 -- Indexes for table `entregas`
 --
 ALTER TABLE `entregas`
-  ADD PRIMARY KEY (`id`),
+--  ADD PRIMARY KEY (`id`),
   ADD KEY `entregas_alunos` (`alunos_id`),
   ADD KEY `entregas_feedback` (`feedback_id`),
   ADD KEY `entregas_solicitacoes` (`solicitacoes_id`);
@@ -457,26 +525,26 @@ ALTER TABLE `entrega_trabalho`
 --
 -- Indexes for table `estados`
 --
-ALTER TABLE `estados`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `estados`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `feedback`
 --
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `feedback`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `graus_academicos`
 --
-ALTER TABLE `graus_academicos`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `graus_academicos`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `instituicoes`
 --
-ALTER TABLE `instituicoes`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `instituicoes`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `solicitacao_tipo_arquivo`
@@ -489,33 +557,33 @@ ALTER TABLE `solicitacao_tipo_arquivo`
 -- Indexes for table `solicitacoes`
 --
 ALTER TABLE `solicitacoes`
-  ADD PRIMARY KEY (`id`),
+--  ADD PRIMARY KEY (`id`),
   ADD KEY `solicitacoes_complementos` (`complementos_id`),
   ADD KEY `trabalhos_turmas` (`turmas_id`);
 
 --
 -- Indexes for table `tipos_arquivos`
 --
-ALTER TABLE `tipos_arquivos`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `tipos_arquivos`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `titulacoes`
 --
-ALTER TABLE `titulacoes`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `titulacoes`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `trabalhos`
 --
-ALTER TABLE `trabalhos`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `trabalhos`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `turmas`
 --
 ALTER TABLE `turmas`
-  ADD PRIMARY KEY (`id`),
+--  ADD PRIMARY KEY (`id`),
   ADD KEY `turmas_docentes` (`docentes_id`),
   ADD KEY `turmas_cursos` (`cursos_id`),
   ADD KEY `turmas_instituicoes` (`instituicoes_id`);
@@ -523,14 +591,14 @@ ALTER TABLE `turmas`
 --
 -- Indexes for table `turnos`
 --
-ALTER TABLE `turnos`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `turnos`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuarios`
 --
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `usuarios`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- DUMPINGX
