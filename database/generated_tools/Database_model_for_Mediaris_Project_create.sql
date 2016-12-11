@@ -89,7 +89,7 @@ CREATE TABLE disciplinas (
 CREATE TABLE docentes (
     id int NOT NULL,
     usuarios_id int NOT NULL,
-    titulacoes_id int NOT NULL,
+    titulacoes_id int,
     nome_exibicao varchar(100) NOT NULL,
     CONSTRAINT id PRIMARY KEY (id)
 );
@@ -228,7 +228,7 @@ ALTER TABLE aluno_turma ADD CONSTRAINT aluno_turma_turmas FOREIGN KEY aluno_turm
 -- Reference: alunos_usuarios (table: alunos)
 ALTER TABLE alunos ADD CONSTRAINT alunos_usuarios FOREIGN KEY alunos_usuarios (usuarios_id)
     REFERENCES usuarios (id)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE;
 
 -- Reference: cidades_estados (table: cidades)
@@ -268,7 +268,7 @@ ALTER TABLE docentes ADD CONSTRAINT docentes_titulacoes FOREIGN KEY docentes_tit
 -- Reference: docentes_usuarios (table: docentes)
 ALTER TABLE docentes ADD CONSTRAINT docentes_usuarios FOREIGN KEY docentes_usuarios (usuarios_id)
     REFERENCES usuarios (id)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE;
 
 -- Reference: entrega_trabalho_entregas (table: entrega_trabalho)
@@ -322,13 +322,13 @@ ALTER TABLE solicitacao_tipo_arquivo ADD CONSTRAINT tipo_arquivo_trabalho_trabal
 -- Reference: trabalhos_turmas (table: solicitacoes)
 ALTER TABLE solicitacoes ADD CONSTRAINT trabalhos_turmas FOREIGN KEY trabalhos_turmas (turmas_id)
     REFERENCES turmas (id)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE;
 
 -- Reference: turmas_docentes (table: turmas)
 ALTER TABLE turmas ADD CONSTRAINT turmas_docentes FOREIGN KEY turmas_docentes (docentes_id)
     REFERENCES docentes (id)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE;
 
 -- Reference: turmas_instituicoes (table: turmas)
