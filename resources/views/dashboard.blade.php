@@ -196,7 +196,7 @@
                                             <i class="glyphicon glyphicon-user" style="font-size: 2em;"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">4</div>
+                                            <div class="huge">{{ \App\Models\Turma::all()->count() }}</div>
                                             <div>Turmas criadas e gerenciadas</div>
                                         </div>
                                     </div>

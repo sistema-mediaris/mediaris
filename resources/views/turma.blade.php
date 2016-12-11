@@ -50,7 +50,8 @@
 
         <div class="col-md-3 text-center">
 
-            <img src="{{ asset('/img/qrcode.png') }}" alt="QR Turma" style="max-height: 16em;"/>
+            <!--<img src="{{ asset('/img/qrcode.png') }}" alt="QR Turma" style="max-height: 16em;"/>-->
+            {!! QrCode::size(270)->margin(0)->generate('http://mediaris.com.br/turmas/123'); !!}
 
         </div>
 

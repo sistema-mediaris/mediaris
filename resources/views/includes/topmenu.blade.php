@@ -23,7 +23,17 @@
                 <li class="dropdown">
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        {{ Auth::user()->name }}
+                        
+                        @if(Auth::user()->super)
+                            @if(Auth::user()->docente)
+                                {{ Auth::user()->docente->titulacao->abreviacao . " " . Auth::user()->docente->nome_exibicao }}
+                            @endif
+                        @else
+                            @if(Auth::user()->aluno)
+                                {{ Auth::user()->aluno->nome_exibicao }}
+                            @endif
+                        @endif
+
                         <span class="caret"></span>
                     </a>
 
@@ -33,7 +43,13 @@
                                 <div class="profile-avatar"
                                      style="background-image: url({{ Auth::user()->avatar }});"></div>
 
-                                <h4>{{ Auth::user()->name }}</h4>
+                                @if(Auth::user()->super)
+                                    <h4><strong>DOCENTE</strong></h4>
+                                @else
+                                    <h4><strong>ALUNO</strong></h4>
+                                @endif
+                                
+                                <!--<h4>{{ Auth::user()->name }}</h4>-->
                                 <p class="text-muted small">{{ Auth::user()->email }}</p>
                                 <p class="text-muted small">Autenticado com {{ Auth::user()->provider }}</p>
                                 <div class="divider"></div>

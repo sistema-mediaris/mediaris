@@ -19,23 +19,24 @@ Route::get('/', function () {
     return view('index');
 });
 
+
 Route::get('/cadastro', function () {
     return view('cadastro');
 });
+Route::get('/cadastro/docente', function () {
+    return view('cadastro.docente');
+});
+Route::post('cadastro/docente', 'Auth\AuthController@insertNewDocente');
+
 
 Route::get('/erro', function () {
     return view('erro');
 });
 
-Route::get('auth/{driver}', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/{driver}/callback', 'Auth\AuthController@handleProviderCallback');
 
-/*
-// two step auth para cadastrar o usuario como docente ou aluno
-Route::get('auth/{driver}/callback', function ($driver) {
-    return view('callbackauth', ['driver' => $driver]);
-});
-*/
+Route::get('/auth/{driver}', 'Auth\AuthController@redirectToProvider');
+Route::get('/auth/{driver}/callback', 'Auth\AuthController@handleProviderCallback');
+
 
 Route::get('/sair', 'Auth\AuthController@logout');
 

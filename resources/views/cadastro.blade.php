@@ -39,6 +39,7 @@
                 a veracidade das informações.</p>
             <h4 class="hidden-xs hidden-sm"><strong>Para continuar com o seu cadastro, selecione um dos serviços listados ao lado.</strong></h4>
             <h4 class="hidden-md hidden-lg"><strong>Para continuar com o seu cadastro, selecione um dos serviços listados abaixo.</strong></h4>
+            <strong>Ao continuar com este cadastro, você está ciente de que está se cadastrando como DOCENTE. Se você é um ALUNO, siga as instruções na página <a href="{{ url('/ajuda') }}">Ajuda</a>.</strong>
 
         </div>
 
@@ -47,6 +48,7 @@
         </div>
 
         <div class="col-md-4 offset-md-2" style="text-align: center;">
+            <h4 style="margin: 1em 0;"><strong>Cadastrando como DOCENTE:</strong></h4>
             <a href="{{ url('/auth/google') }}" class="btn btn-block btn-social btn-google">
                 <i class="demo-icon icon-google" style="font-size: .975em;"></i> Autenticar com Google Gmail
             </a>

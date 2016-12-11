@@ -17,6 +17,9 @@
                 <li><a href="{{ url('/sobre') }}">Sobre</a></li>
                 <li><a href="{{ url('/ajuda') }}">Ajuda</a></li>
                 <li><a href="{{ url('/contato') }}">Contato</a></li>
+                @if(Auth::check() && (Auth::user()->docente || Auth::user()->aluno))
+                    <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -72,18 +75,38 @@
 
                     @else
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ Auth::user()->name }}
-                            <span class="caret"></span>
-                        </a>
+                        @if(Auth::user()->docente || Auth::user()->aluno)
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                
+                                @if(Auth::user()->super)
+                                    @if(Auth::user()->docente)
+                                        {{ Auth::user()->docente->titulacao->abreviacao . " " . Auth::user()->docente->nome_exibicao }}
+                                    @endif
+                                @else
+                                    @if(Auth::user()->aluno)
+                                        {{ Auth::user()->aluno->nome_exibicao }}
+                                    @endif
+                                @endif
+
+                                <span class="caret"></span>
+                            </a>
+
+                        @endif
 
                         <ul class="dropdown-menu">
                             <li class="row user-menu">
                                 <div class="col-md-12">
                                     <div class="profile-avatar"
                                          style="background-image: url({{ Auth::user()->avatar }});"></div>
-
-                                    <h4>{{ Auth::user()->name }}</h4>
+                                    
+                                    @if(Auth::user()->super)
+                                        <h4><strong>DOCENTE</strong></h4>
+                                    @else
+                                        <h4><strong>ALUNO</strong></h4>
+                                    @endif
+                                    
+                                    <!--<h4>{{ Auth::user()->name }}</h4>-->
                                     <p class="text-muted small">{{ Auth::user()->email }}</p>
                                     <p class="text-muted small">Autenticado com {{ Auth::user()->provider }}</p>
                                     <div class="divider"></div>
