@@ -32,6 +32,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function aluno()
+    {
+        return $this->hasOne(\App\Models\Aluno::class, 'usuarios_id');
+    }
+
+    public function docente()
+    {
+        return $this->hasOne(\App\Models\Docente::class, 'usuarios_id');
+    }
+
     /*
     //apenas para seguindo o fluxo para documentar
     //https://tuts.codingo.me/laravel-social-and-email-authentication

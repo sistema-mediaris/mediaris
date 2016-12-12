@@ -22,7 +22,11 @@
                 @endif
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            @if(!Auth::check())
+                <ul class="nav navbar-nav navbar-right {{ (Request::is('turmas/*') ? 'hide' : '') }} ">
+            @else
+                <ul class="nav navbar-nav navbar-right">
+            @endif
 
                 @if(!Auth::check())
 
@@ -124,6 +128,8 @@
 
                 </li>
             </ul>
+
+
         </div>
     </div>
 </nav>

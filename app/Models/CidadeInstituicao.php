@@ -37,8 +37,8 @@ class CidadeInstituicao extends Eloquent
 		return $this->belongsTo(\App\Models\Cidade::class, 'cidades_id');
 	}
 
-	public function instituico()
+	public function instituicao()
 	{
-		return $this->belongsTo(\App\Models\Instituico::class, 'instituicoes_id');
+		return $this->belongsTo(\App\Models\Instituicao::class, 'instituicoes_id');
 	}
 }

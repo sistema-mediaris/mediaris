@@ -32,4 +32,9 @@ class Turno extends Eloquent
 		return $this->belongsToMany(\App\Models\Curso::class, 'curso_turno', 'turnos_id', 'cursos_id')
 					->withTimestamps();
 	}
+
+	public function turmas()
+	{
+		return $this->hasMany(\App\Models\Turma::class, 'turnos_id');
+	}
 }

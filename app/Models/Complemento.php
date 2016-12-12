@@ -31,8 +31,8 @@ class Complemento extends Eloquent
 		'objetivo'
 	];
 
-	public function solicitacos()
+	public function solicitacoes()
 	{
-		return $this->hasMany(\App\Models\Solicitaco::class, 'complementos_id');
+		return $this->hasMany(\App\Models\Solicitacao::class, 'complementos_id');
 	}
 }

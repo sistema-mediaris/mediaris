@@ -29,6 +29,7 @@
     <link href="{{ asset('css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -65,7 +66,6 @@
     @include('includes.footer')
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <link href="{{ asset('css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
 <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>

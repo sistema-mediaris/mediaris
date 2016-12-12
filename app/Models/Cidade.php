@@ -39,8 +39,8 @@ class Cidade extends Eloquent
 		return $this->belongsTo(\App\Models\Estado::class, 'estados_id');
 	}
 
-	public function cidade_instituicaos()
+	public function instituicoes()
 	{
-		return $this->hasMany(\App\Models\CidadeInstituicao::class, 'cidades_id');
+		return $this->belongsToMany(\App\Models\Instituicao::class);
 	}
 }

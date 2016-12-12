@@ -33,14 +33,16 @@ class Instituicao extends Eloquent
 		'sigla'
 	];
 
-	public function cidade_instituicaos()
+	public function cidades()
 	{
-		return $this->hasMany(\App\Models\CidadeInstituicao::class, 'instituicoes_id');
+		return $this->belongsToMany(\App\Models\Cidade::class, 'cidade_instituicao',  
+      		'instituicoes_id', 'cidades_id')->withTimestamps();
 	}
 
-	public function curso_instituicaos()
+	public function cursos()
 	{
-		return $this->hasMany(\App\Models\CursoInstituicao::class, 'instituicoes_id');
+		return $this->belongsToMany(\App\Models\Curso::class, 'curso_instituicao',  
+      		'instituicoes_id', 'cursos_id')->withTimestamps();
 	}
 
 	public function turmas()

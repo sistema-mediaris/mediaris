@@ -50,9 +50,14 @@ class Turma extends Eloquent
 		'url'
 	];
 
-	public function turma()
+	public function cursos()
 	{
-		return $this->belongsTo(\App\Models\Turma::class, 'cursos_id');
+		return $this->belongsTo(\App\Models\Curso::class, 'cursos_id');
+	}
+
+	public function turnos()
+	{
+		return $this->belongsTo(\App\Models\Turno::class, 'turnos_id');
 	}
 
 	public function docente()
@@ -60,9 +65,9 @@ class Turma extends Eloquent
 		return $this->belongsTo(\App\Models\Docente::class, 'docentes_id');
 	}
 
-	public function instituico()
+	public function instituicao()
 	{
-		return $this->belongsTo(\App\Models\Instituico::class, 'instituicoes_id');
+		return $this->belongsTo(\App\Models\Instituicao::class, 'instituicoes_id');
 	}
 
 	public function alunos()
@@ -71,13 +76,9 @@ class Turma extends Eloquent
 					->withTimestamps();
 	}
 
-	public function solicitacos()
+	public function solicitacoes()
 	{
-		return $this->hasMany(\App\Models\Solicitaco::class, 'turmas_id');
+		return $this->hasMany(\App\Models\Solicitacao::class, 'turmas_id');
 	}
 
-	public function turmas()
-	{
-		return $this->hasMany(\App\Models\Turma::class, 'cursos_id');
-	}
 }

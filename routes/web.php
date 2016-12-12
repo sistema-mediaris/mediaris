@@ -14,12 +14,14 @@
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/erro', function () {
+    return view('erro');
+});
 
-
+/* CADASTRO */
 Route::get('/cadastro', function () {
     return view('cadastro');
 });
@@ -28,17 +30,26 @@ Route::get('/cadastro/docente', function () {
 });
 Route::post('cadastro/docente', 'Auth\AuthController@insertNewDocente');
 
+// -----
 
-Route::get('/erro', function () {
-    return view('erro');
-});
-
+/* AUTH */
 
 Route::get('/auth/{driver}', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/{driver}/callback', 'Auth\AuthController@handleProviderCallback');
 
-
 Route::get('/sair', 'Auth\AuthController@logout');
+
+// -----
+
+/* RESOURCES */
+
+Route::get('turmas/v/{id}', 'TurmasController@showComplete');
+Route::resource('turmas', 'TurmasController');
+
+
+Route::resource('solicitacoes', 'SolicitacoesController');
+
+// -----
 
 // Layouts avulsos
 

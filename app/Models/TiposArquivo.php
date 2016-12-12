@@ -31,4 +31,11 @@ class TiposArquivo extends Eloquent
 	{
 		return $this->hasMany(\App\Models\SolicitacaoTipoArquivo::class, 'tipos_arquivos_id');
 	}
+
+	/**/
+	public function solicitacoes()
+	{
+		return $this->belongsToMany(\App\Models\Solicitacao::class, 'solicitacao_tipo_arquivo',  
+      		'tipos_arquivos_id', 'solicitacoes_id')->withTimestamps();
+	}
 }

@@ -50,14 +50,19 @@ class Curso extends Eloquent
 		return $this->hasMany(\App\Models\CursoGrauAcademico::class, 'cursos_id');
 	}
 
-	public function curso_instituicaos()
+	public function instituicaos()
 	{
-		return $this->hasMany(\App\Models\CursoInstituicao::class, 'cursos_id');
+		return $this->belongsToMany(\App\Models\Instituicao::class, 'curso_instituicao');
 	}
 
 	public function turnos()
 	{
 		return $this->belongsToMany(\App\Models\Turno::class, 'curso_turno', 'cursos_id', 'turnos_id')
 					->withTimestamps();
+	}
+
+	public function turmas()
+	{
+		return $this->hasMany(\App\Models\Turma::class, 'cursos_id');
 	}
 }
