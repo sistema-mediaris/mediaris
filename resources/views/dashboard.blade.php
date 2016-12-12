@@ -166,14 +166,14 @@
                     <strong>Menu rápido</strong>
                 </div>
                 <div class="panel-body">
-                    <a href="{{ url('/turmas/criar') }}" class="btn btn-primary btn-block btn-success btn-quick"><span
+                    <a href="{{ url('/turmas/create') }}" class="btn btn-primary btn-block btn-success btn-quick"><span
                                 class="glyphicon glyphicon-plus"></span> Cadastrar uma nova turma</a>
-                    <a href="{{ url('/trabalhos/criar') }}" class="btn btn-primary btn-block btn-success btn-quick"><span
+                    <a href="{{ url('/solicitacoes/create') }}" class="btn btn-primary btn-block btn-success btn-quick"><span
                                 class="glyphicon glyphicon-plus"></span> Cadastrar uma nova solicitação</a>
 
-                    <a href="#" class="btn btn-primary btn-block btn-info btn-quick"><span
+                    <a href="{{ url('/turmas') }}" class="btn btn-primary btn-block btn-info btn-quick"><span
                                 class="glyphicon glyphicon-list"></span> Visualizar lista de turmas</a>
-                    <a href="#" class="btn btn-primary btn-block btn-info btn-quick"><span
+                    <a href="{{ url('/solicitacoes') }}" class="btn btn-primary btn-block btn-info btn-quick"><span
                                 class="glyphicon glyphicon-list"></span> Visualizar lista de solicitações</a>
 
                 </div>

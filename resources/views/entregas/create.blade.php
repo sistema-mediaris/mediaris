@@ -35,8 +35,8 @@
 
 @section('content')
 
-    <h1>Editar uma solicitação de trabalho</h1>
-    <p class="lead">Editando solicitação de trabalho: <strong>{{ $solicitacao->nome }}</strong></p>
+    <h1>Adicionar uma nova solicitação de trabalho</h1>
+    <p class="lead">Crie uma nova solicitação de trabalho</p>
     <hr>
 
     @if(Session::has('error'))
@@ -45,16 +45,15 @@
         </div>
     @endif
 
-    <form action="{{ url('/solicitacoes') }}" class="form-horizontal">
+    <form action="{{ url('/solicitacoes') }}" method="post"  class="form-horizontal">
 
-        {{ method_field('PUT') }}
         {{ csrf_field() }}
 
         <div class="form-group @if ($errors->has('nome')) has-error @endif">
             <label class="col-md-2 control-label" for="nome">Nome</label>
             <div class="col-md-10">
                 <input id="nome" name="nome" type="text" placeholder="Nome de identificação da solicitação"
-                       class="form-control" value="{{ $solicitacao->nome }}">
+                       class="form-control" required="">
                 <span class="help-block">Informe um nome para identificar a solicitação</span>
             </div>
         </div>
@@ -77,7 +76,7 @@
                     @endphp
 
                     @foreach($turmas as $k => $val)
-                        @if ($val->id == old('turmas_id') || $val->id == $solicitacao->turma->id)
+                        @if ($val->id == old('turmas_id'))
                             <option value="{{ $val->id }}" selected>
                         @else
                             <option value="{{ $val->id }}">
@@ -91,17 +90,12 @@
             </div>
         </div>
 
-        @php
-            $dte = $solicitacao->data_entrega;
-            $entrega = \Carbon\Carbon::parse($dte)->format('d/m/Y');
-        @endphp
-
         <div class="form-group @if ($errors->has('data_entrega')) has-error @endif">
             <label class="col-md-2 control-label" for="data_entrega">Data de entrega</label>
             <div id="calendario" class="col-md-10">
                 <div class="input-group date">
                     <input id="data_entrega" name="data_entrega" class="form-control"
-                           placeholder="Data de entrega" type="text" value="{{ $entrega }}"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>Calendário</span>
+                           placeholder="Data de entrega" type="text"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>Calendário</span>
                 </div>
                 <span class="help-block">Defina uma data de entrega</span>
             </div>
@@ -112,20 +106,10 @@
             <div class="col-md-10">
                 <select id="tipo_arquivos" name="tipos_arquivos[]" class="form-control" multiple="multiple" style="height: 8em;">
 
-                    @php
-                        $array_exts = [];
-                        foreach($solicitacao->tipos_arquivos as $role)
-                            array_push($array_exts, $role->id);
-                    @endphp
-
                     @if($exts = App\Models\TiposArquivo::all())
 
                         @foreach($exts as $ext)
-                            @if(in_array($ext->id, $array_exts))
-                                <option value="{{ $ext->id }}" selected>{{ $ext->extensao }}</option>
-                            @else
-                                <option value="{{ $ext->id }}">{{ $ext->extensao }}</option>
-                            @endif
+                            <option value="{{ $ext->id }}">{{ $ext->extensao }}</option>
                         @endforeach
 
                     @endif
@@ -138,11 +122,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="descricao">Descrição detalhada</label>
             <div class="col-md-10">
-            @if($solicitacao->complemento)
-                <textarea class="form-control" id="descricao" name="descricao" rows="4">{{ $solicitacao->complemento->descricao }}</textarea>
-            @else
                 <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>
-            @endif
                 <span class="help-block">OPCIONAL: informe uma descrição detalhada da solicitação de trabalho</span>
             </div>
         </div>
@@ -150,11 +130,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="assunto">Assuntos tratados</label>
             <div class="col-md-10">
-            @if($solicitacao->complemento)
-                <textarea class="form-control" id="assunto" name="assunto" rows="4">{{ $solicitacao->complemento->assunto }}</textarea>
-            @else
                 <textarea class="form-control" id="assunto" name="assunto" rows="4"></textarea>
-            @endif
                 <span class="help-block">OPCIONAL: liste os assuntos tratados na solicitação de trabalho</span>
             </div>
         </div>
@@ -162,18 +138,14 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="objetivo">Objetivos esperados</label>
             <div class="col-md-10">
-            @if($solicitacao->complemento)
-                <textarea class="form-control" id="objetivo" name="objetivo" rows="4">{{ $solicitacao->complemento->objetivo }}</textarea>
-            @else
                 <textarea class="form-control" id="objetivo" name="objetivo" rows="4"></textarea>
-            @endif
                 <span class="help-block">OPCIONAL: liste os objetivos esperados da solicitação de trabalho</span>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-success">Enviar</button>
                 <a href="{{ url('/solicitacoes') }}" class="btn btn-default">Cancelar</a>
             </div>
         </div>

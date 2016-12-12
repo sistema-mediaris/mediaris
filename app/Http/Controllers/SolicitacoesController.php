@@ -113,7 +113,7 @@ class SolicitacoesController extends Controller
     public function show($id)
     {
         
-        $solicitacao = Solicitacao::find($id);
+        $solicitacao = Solicitacao::findOrFail($id);
         return View::make('solicitacoes.show')->with('solicitacao', $solicitacao);
 
     }
@@ -127,7 +127,7 @@ class SolicitacoesController extends Controller
     public function edit($id)
     {
 
-        $solicitacao = Solicitacao::find($id);
+        $solicitacao = Solicitacao::findOrFail($id);
         return View::make('solicitacoes.edit')->with('solicitacao', $solicitacao);
     
     }
@@ -195,7 +195,7 @@ class SolicitacoesController extends Controller
      */
     public function destroy($id)
     {
-        $solicitacao = Solicitacao::find($id);
+        $solicitacao = Solicitacao::findOrFail($id);
         $solicitacao->delete();
 
         Session::flash('message', 'Solicitação deletada com sucesso!');

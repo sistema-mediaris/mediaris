@@ -45,9 +45,9 @@ Route::get('/sair', 'Auth\AuthController@logout');
 
 Route::get('turmas/v/{id}', 'TurmasController@showComplete');
 Route::resource('turmas', 'TurmasController');
-
-
 Route::resource('solicitacoes', 'SolicitacoesController');
+Route::get('solicitacoes/{id}/entregas', 'EntregasController@indexForSolicitacoes');
+Route::resource('entregas', 'EntregasController');
 
 // -----
 

@@ -34,8 +34,8 @@
 
 @section('content')
 
-    <h1>Lista de solicitações de trabalhos</h1>
-    <p class="lead">Listagem de todas as solicitações de trabalho</p>
+    <h1>Lista de entregas de trabalhos</h1>
+    <p class="lead">Listagem das entregas para a solicitação {{}}</p>
     <hr>
 
 	<!-- se houver alguma mensagem -->
