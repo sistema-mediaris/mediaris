@@ -83,7 +83,7 @@ class TurmasController extends Controller
         $turma = Turma::where('code', $id)->first();
         //$turma = Turma::find($id);
 
-        return view('turmas.show', ["turma"=>$turma]);
+        return view('turmas.show', ["turma" => $turma]);
 
     }
 

@@ -1,6 +1,6 @@
 @extends('layouts.interno')
 
-@section('title', 'Listagem - Solicitação')
+@section('title', 'Listar - Solicitação')
 
 @section('custom-css')
 
@@ -35,7 +35,7 @@
 @section('content')
 
     <h1>Lista de solicitações de trabalhos</h1>
-    <p class="lead">Listagem de todas as solicitações de trabalho</p>
+    <p class="lead">Listagem de todas as solicitações de trabalho criadas por você</p>
     <hr>
 
 	<!-- se houver alguma mensagem -->
@@ -43,8 +43,10 @@
 	    <div class="alert alert-info">{{ Session::get('message') }}</div>
 	@endif
 
+	@if(Auth::user()->super)
 	<a href="{{ URL::to('solicitacoes/create') }}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus"></span> Criar nova solicitação</a>
 	<br><br>
+	@endif
 
 	<table class="table table-striped table-bordered table-hover">
 	    
@@ -59,19 +61,27 @@
 	    </thead>
 
 	    <tbody style="text-align: center;">
+
 	    @foreach($solicitacoes as $k => $val)
 
 	        <tr>
 	            <td>{{ $val->solicitacao_id }}</td>
 	            <td>{{ $val->nome }}</td>
-	            <td>{{ $val->data_criacao }}</td>
-	            <td>{{ $val->data_entrega }}</td>
+	            <td>{{ \Carbon\Carbon::parse($val->data_criacao)->format('d/m/Y') }}</td>
+	            <td>{{ \Carbon\Carbon::parse($val->data_entrega)->format('d/m/Y') }}</td>
 	            <td>
 	                
+	                
+
+	                @if(Auth::user()->super)
 	                <form action="{{ url('/solicitacoes/' . $val->solicitacao_id) }}" method="post">
 	                	
 	                	{{ method_field('DELETE') }}
         				{{ csrf_field() }}
+
+        				<a class="btn btn-xs btn-info" href="{{ URL::to('solicitacoes/' . $val->solicitacao_id . '/entregas') }}">
+		                	<span class="glyphicon glyphicon-folder-open"></span> Ver entregas
+		                </a>
 
 		                <a class="btn btn-xs btn-info" href="{{ URL::to('solicitacoes/' . $val->solicitacao_id) }}">
 		                	<span class="glyphicon glyphicon-search"></span>
@@ -84,6 +94,11 @@
 	                	<button type="submit" class="btn btn-xs btn-danger confirmation"><span class="glyphicon glyphicon-remove"></span></button>
 
 	                </form>
+	                @else
+	                	<a class="btn btn-xs btn-success" href="{{ URL::to('aluno/solicitacoes/'.$val->solicitacao_id.'/entregas/create') }}">
+		                	<span class="glyphicon glyphicon-file"></span> Enviar trabalho
+		                </a>
+	                @endif
 
 	                
 

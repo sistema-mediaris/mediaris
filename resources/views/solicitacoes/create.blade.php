@@ -146,7 +146,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" class="btn btn-success">Enviar</button>
-                <a href="{{ url('/solicitacoes') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ url()->previous() }}" class="btn btn-default">Cancelar</a>
             </div>
         </div>
 

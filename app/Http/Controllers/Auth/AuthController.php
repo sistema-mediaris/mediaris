@@ -58,7 +58,6 @@ class AuthController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'provider' => $driver,
-            'super' => true,
             'social_id' => $user->id,
         ];
 
@@ -113,7 +112,10 @@ class AuthController extends Controller
                 'nome_exibicao' => $data['nome_exibicao'],
             ];
 
-            if (Docente::firstOrCreate($insert)) {
+            if ($docente = Docente::firstOrCreate($insert)) {
+
+                $docente->super = true;
+                $docente->save();
 
                 return redirect('dashboard');
 

@@ -5,7 +5,6 @@
 @section('custom-css')
 
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -39,77 +38,37 @@
 
 @section('content')
 
-    <h1>Solicitação de trabalho: <strong>#{{ $solicitacao->id }}</strong></h1>
-    <p class="lead">Visualizando a solicitação de trabalho <strong>{{ $solicitacao->nome }}</strong></p>
+    <h1>Entrega: #{{ $entrega->id }} - Solicitação: <strong>#{{ $entrega->solicitacoes_id }}</strong></h1>
+    <p class="lead">Visualizando a entrega para a solicitação de trabalho <strong>{{ $solicitacao->nome }}</strong></p>
     <hr>
-    <form action="{{ url('/solicitacoes/' . $solicitacao->id) }}" method="post">
-                        
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
 
-    <a href="{{ url('/solicitacoes/') }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-th-list"></span> Listar solicitações</a>
-    <a href="{{ url('/solicitacoes/' . $solicitacao->id . '/edit') }}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> Altera solicitação</a>
-    <button type="submit" class="btn btn-sm btn-danger confirmation"><span class="glyphicon glyphicon-plus"></span> Excluir solicitação</button>
+        <a href="{{ url('aluno/solicitacoes/') }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-th-list"></span> Listar solicitações</a>
+        <a href="{{ url('aluno/solicitacoes/' . $solicitacao->id . '/entregas/edit') }}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> Alterar entrega</a>
+        
 
-                    </form>
-
-    <h4><strong>Nome:</strong> {{ $solicitacao->nome }}</h4>
-    <h4><strong>Turma:</strong> {{ $solicitacao->turma->id}} - <a href="{{ url('turmas/' . $solicitacao->turma->code) }}"> #{{$solicitacao->turma->code}}</a> {{" - " . $solicitacao->turma->instituicao->nome }}</h4>
-
-    @php
-        $dtc = $solicitacao->data_criacao;
-        $dte = $solicitacao->data_entrega;
-        $criacao = \Carbon\Carbon::parse($dtc)->format('d/m/Y');
-        $entrega = \Carbon\Carbon::parse($dte)->format('d/m/Y');
-    @endphp
+    <h4><strong>Aluno:</strong> {{ $aluno->nome_exibicao }}</h4>
     
-    <h4><strong>Data de criação:</strong> {{ $criacao }}</h4>
-    <h4><strong>Data de entrega:</strong> {{ $entrega }}</h4>
-    
-    @if($solicitacao->tipos_arquivos)
-        <h4><strong>Tipos de arquivo:</strong><h4>
+
+    @if($entrega->trabalhos)
+        <h4><strong>Arquivos enviados:</strong><h4>
         <ul>
-
-        @if(count($solicitacao->tipos_arquivos) > 0)
-            @foreach ($solicitacao->tipos_arquivos as $tipo)
-                <li>{{ $tipo->extensao }}</li>
-            @endforeach
-        @else
-            <li>Nenhum tipo de arquivo informado.</li>
-        @endif
-
+            <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Arquivo 1</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Arquivo 2</a></li>
         </ul>
     @endif
 
-    @if($solicitacao->complemento)
+    @if($entrega->feedback)
 
-        <h4><strong>Descrição detalhada:</strong></h4>
-        @if($solicitacao->complemento->descricao)
+        <h4><strong>Feedback:</strong></h4>
+        @if($solicitacao->feedback->comentario)
             <p>{{ $solicitacao->complemento->descricao }}</p>
         @else
-            <p>Não foi informada uma descrição.</p>
-        @endif
-        
-        <h4><strong>Assuntos tratados:</strong></h4>
-        @if($solicitacao->complemento->assunto)
-            <p>{{ $solicitacao->complemento->assunto }}</p>
-        @else
-            <p>Não foi informado um assunto.</p>
+            <p>Não foi informada um feedback.</p>
         @endif
 
-        <h4><strong>Objetivos esperados:</strong></h4>
-        @if($solicitacao->complemento->objetivo)
-            <p>{{ $solicitacao->complemento->objetivo }}</p>
-        @else
-            <p>Não foi informado um objetivo.</p>
-        @endif
     @else
-        <h4><strong>Descrição detalhada:</strong></h4>
-        <p>Não foi informada uma descrição.</p>
-        <h4><strong>Assuntos tratados:</strong></h4>
-        <p>Não foi informado um assunto.</p>
-        <h4><strong>Objetivos esperados:</strong></h4>
-        <p>Não foi informado um objetivo.</p>
+        <h4><strong>Feedback:</strong></h4>
+        <p>Não foi informada um feedback.</p>
     @endif
 
 @endsection

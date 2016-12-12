@@ -39,6 +39,29 @@ class SolicitacoesController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexForAlunos()
+    {
+
+        $user = Auth::user();
+
+        $solicitacoes = DB::table('alunos')
+            ->select('alunos.*')->where('alunos.usuarios_id', '=', $user->id)
+            ->join('aluno_turma', 'alunos.id', '=', 'aluno_turma.alunos_id')
+            ->join('turmas', 'turmas.id', '=', 'aluno_turma.turmas_id')
+            ->join('solicitacoes', 'turmas.id', '=', 'solicitacoes.turmas_id')
+            ->join('instituicoes', 'instituicoes.id', '=', 'turmas.instituicoes_id')
+            ->select('instituicoes.nome', 'solicitacoes.id as solicitacao_id', 'solicitacoes.*', 'alunos.id as alunos_id', 'alunos.*')
+            ->get();
+
+        return View::make('solicitacoes.index')->with('solicitacoes', $solicitacoes);
+
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

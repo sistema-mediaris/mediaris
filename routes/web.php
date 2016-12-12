@@ -46,7 +46,11 @@ Route::get('/sair', 'Auth\AuthController@logout');
 Route::get('turmas/v/{id}', 'TurmasController@showComplete');
 Route::resource('turmas', 'TurmasController');
 Route::resource('solicitacoes', 'SolicitacoesController');
+Route::get('aluno/solicitacoes/', 'SolicitacoesController@indexForAlunos');
+Route::get('aluno/solicitacoes/{id}/entregas/create', 'EntregasController@create');
+
 Route::get('solicitacoes/{id}/entregas', 'EntregasController@indexForSolicitacoes');
+Route::get('aluno/entregas/{id}', 'EntregasController@show');
 Route::resource('entregas', 'EntregasController');
 
 // -----

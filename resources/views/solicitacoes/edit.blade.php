@@ -1,6 +1,6 @@
 @extends('layouts.interno')
 
-@section('title', 'Criar - Solicitação')
+@section('title', 'Editar - Solicitação')
 
 @section('custom-css')
 
@@ -174,7 +174,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" class="btn btn-success">Salvar</button>
-                <a href="{{ url('/solicitacoes') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ url()->previous() }}" class="btn btn-default">Cancelar</a>
             </div>
         </div>
 

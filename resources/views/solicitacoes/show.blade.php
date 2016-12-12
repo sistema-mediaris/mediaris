@@ -1,11 +1,10 @@
 @extends('layouts.interno')
 
-@section('title', 'Criar - Solicitação')
+@section('title', 'Visualizar - Solicitação')
 
 @section('custom-css')
 
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -42,16 +41,18 @@
     <h1>Solicitação de trabalho: <strong>#{{ $solicitacao->id }}</strong></h1>
     <p class="lead">Visualizando a solicitação de trabalho <strong>{{ $solicitacao->nome }}</strong></p>
     <hr>
+    @if(Auth::user()->super)
     <form action="{{ url('/solicitacoes/' . $solicitacao->id) }}" method="post">
                         
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
 
-    <a href="{{ url('/solicitacoes/') }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-th-list"></span> Listar solicitações</a>
-    <a href="{{ url('/solicitacoes/' . $solicitacao->id . '/edit') }}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> Altera solicitação</a>
-    <button type="submit" class="btn btn-sm btn-danger confirmation"><span class="glyphicon glyphicon-plus"></span> Excluir solicitação</button>
+        <a href="{{ url('/solicitacoes/') }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-th-list"></span> Listar solicitações</a>
+        <a href="{{ url('/solicitacoes/' . $solicitacao->id . '/edit') }}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> Alterar solicitação</a>
+        <button type="submit" class="btn btn-sm btn-danger confirmation"><span class="glyphicon glyphicon-plus"></span> Excluir solicitação</button>
 
-                    </form>
+    </form>
+    @endif
 
     <h4><strong>Nome:</strong> {{ $solicitacao->nome }}</h4>
     <h4><strong>Turma:</strong> {{ $solicitacao->turma->id}} - <a href="{{ url('turmas/' . $solicitacao->turma->code) }}"> #{{$solicitacao->turma->code}}</a> {{" - " . $solicitacao->turma->instituicao->nome }}</h4>

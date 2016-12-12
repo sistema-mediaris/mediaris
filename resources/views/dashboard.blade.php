@@ -159,6 +159,10 @@
 
     {{--<h4><strong>Menu rápido</strong></h4>--}}
 
+    @php
+        $super = (Auth::user()->super) ? true : false;
+    @endphp
+
     <div class="row">
         <div class="col-md-5">
             <div class="panel panel-default">
@@ -166,12 +170,13 @@
                     <strong>Menu rápido</strong>
                 </div>
                 <div class="panel-body">
-                    <a href="{{ url('/turmas/create') }}" class="btn btn-primary btn-block btn-success btn-quick"><span
+                @if($super)
+                    <a href="{{ url('/turmas/create') }}" class="btn btn-primary btn-block btn-success btn-quick disabled"><span
                                 class="glyphicon glyphicon-plus"></span> Cadastrar uma nova turma</a>
                     <a href="{{ url('/solicitacoes/create') }}" class="btn btn-primary btn-block btn-success btn-quick"><span
                                 class="glyphicon glyphicon-plus"></span> Cadastrar uma nova solicitação</a>
-
-                    <a href="{{ url('/turmas') }}" class="btn btn-primary btn-block btn-info btn-quick"><span
+                @endif
+                    <a href="{{ url('/turmas') }}" class="btn btn-primary btn-block btn-info btn-quick disabled"><span
                                 class="glyphicon glyphicon-list"></span> Visualizar lista de turmas</a>
                     <a href="{{ url('/solicitacoes') }}" class="btn btn-primary btn-block btn-info btn-quick"><span
                                 class="glyphicon glyphicon-list"></span> Visualizar lista de solicitações</a>
@@ -179,6 +184,7 @@
                 </div>
             </div>
         </div>
+        @if(Auth::user()->super)
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -217,7 +223,7 @@
                                             <i class="glyphicon glyphicon-folder-open" style="font-size: 2em;"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">104</div>
+                                            <div class="huge">{{ \App\Models\Trabalho::all()->count() }}</div>
                                             <div>Trabalhos recebidos</div>
                                         </div>
                                     </div>
@@ -237,6 +243,7 @@
                 {{--</div>--}}
             </div>
         </div>
+        @endif
     </div>
 
 
